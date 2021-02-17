@@ -72,7 +72,7 @@ awards = ["best screenplay - motion picture", "best director - motion picture",
           "best performance by an actor in a television series - comedy or musical"] 
 
 tokens_to_ignore = ["RT", "@", "golden globe", "goldenglobe", "globe", "globes", "golden", "hosts", "http", "#", "presentan", "globo", "wife", "y"]
-potential_people_answers_to_ignore = ["hbo", "god", "motion picture", "winner", "award", "tv", "drama", "musical", "comedy", "actor", "actress", "movie", "honor", "star"]
+potential_people_answers_to_ignore = ["hbo", "god", "motion picture", "winner", "award", "tv", "drama", "musical", "comedy", "actor", "actress", "movie", "honor", "star", "best", "mejor", "http", "@", "#", "fuck", "congrat"]
 potential_media_answers_to_ignore = []
 ### Helper Functions ###
 
@@ -111,8 +111,8 @@ def checkKeyWords(key_word_award_mapping, tweet):
     return awards
     
 ### Updates Host Dictionary
-def updateHostDictionary(doc, tweet, hosts):  
-    if ("host" in tweet and ("golden" in tweet or "globe" in tweet)):
+def updateHostDictionary(doc, tweet, hosts, host_keys):  
+    if (any(i for i in host_keys if(i in tweet))):
         pos = [tok.i for tok in doc if (tok.pos_ == "PROPN" and not any(i in tok.text.lower().split() for i in tokens_to_ignore))]
         properPronouns = getSolutionsFromPositions(doc, pos)
         # Only want Phrases with 2-3 words (to represent a full name)
@@ -127,14 +127,16 @@ def updateHostDictionary(doc, tweet, hosts):
     return hosts
 
 ### Updates AwardNames Dictionary
-def updateAwardNamesDictionary(doc, tweet, awardNames):
-    if ("best " in tweet and ("dress" not in tweet or "speech" not in tweet)):                    
+def updateAwardNamesDictionary(doc, tweet, awardNames, award_name_keys):
+    if (any(i for i in award_name_keys if(i in tweet)) and ("dress" not in tweet or "speech" not in tweet)):                 
         nouns = ["PROPN", "NOUN"]
-        pos = [tok.i for tok in doc if ((tok.pos_ in nouns) or (tok.pos_ == "ADJ" and tok.text.lower() == "best")) and not any(i in tok.text.lower().split() for i in tokens_to_ignore)]
+        pos = [tok.i for tok in doc if ((tok.pos_ in nouns) or (tok.pos_ == "ADJ" and tok.text.lower() == "best") or (tok.text == "-")) and not any(i in tok.text.lower().split() for i in tokens_to_ignore)]
         words = getSolutionsFromPositions(doc, pos)
         for a in (words):
             potential_award_name = a.text.lower()
             if (potential_award_name[0:5] != "best "):
+                continue
+            if (len(potential_award_name.split()) < 4):
                 continue
             if potential_award_name in awardNames:
                 awardNames[potential_award_name] += 1
@@ -143,8 +145,8 @@ def updateAwardNamesDictionary(doc, tweet, awardNames):
     return awardNames
 
 ### Updates Winners Dictionary
-def updateWinnersDictionary(doc, tweet, winners, matches):
-    if (("won" in tweet.lower() or "congrat" in tweet.lower() or "winner" in tweet.lower() or "goes to" in tweet.lower()) and ("best" in tweet.lower() or "cecil" in tweet.lower())):
+def updateWinnersDictionary(doc, tweet, winners, matches, winner_keys):
+    if (any(i for i in winner_keys if(i in tweet))):
         for award in matches:
             movies_tv_pos = ["PROPN", "NOUN", "ADJ", "AUX", "VERB"]
             if ("act" in award or "cecil" in award):
@@ -170,8 +172,9 @@ def updateWinnersDictionary(doc, tweet, winners, matches):
     return winners
 
 ### Updates Presenters Dictionary
-def updatePresentersDictionary(doc, tweet, presenters, matches):
-    if ("present" in tweet or "announc" in tweet or "award" in tweet or "give" in tweet):
+def updatePresentersDictionary(doc, tweet, presenters, matches, presenter_keys):
+    if (any(i for i in presenter_keys if(i in tweet))):
+    #if ("present" in tweet or "announc" in tweet or "award" in tweet or "give" in tweet):
         for award in matches:
             pos = [tok.i for tok in doc if ((tok.pos_ == "PROPN" or tok.text.lower() == "will") and not any(i in tok.text.lower().split() for i in tokens_to_ignore))] #maybe include not congrat
             properPronouns = getSolutionsFromPositions(doc, pos)
@@ -210,7 +213,14 @@ def updateAnswerDictionary(j, hosts, awardNames, winners, presenters, answer):
             answer[j]["hosts"] = myList
 
     #Awards
-    #Find the top 1-2 Names, those will be the people mentioned the most with the word best
+    # Removes the chance for award names selected to include the name of person/movie that won an award
+    for m in winners.keys():
+        for i in winners[m].keys():
+            for k in awardNames.keys():
+                if i in k:
+                    awardNames[k] = 0
+
+
     award_list = sorted(awardNames.keys(), key=awardNames.get, reverse = True)
     ans = []
     for i in award_list:
@@ -384,10 +394,18 @@ def pre_ceremony():
             #This if statement is so tweets that dont fit any of these are not looked at at all
             #if ("host" in tweet.lower()) or ("best " in tweet.lower()) or (("won" in tweet.lower() or "congrat" in tweet.lower() or "winner" in tweet.lower() or "goes to" in tweet.lower()) and ("best" in tweet.lower() or "cecil" in tweet.lower())) or (("present" in tweet.lower() or "announc" in tweet.lower() or "give" in tweet.lower() or "award" in tweet.lower()) and ("best" in tweet.lower() or "cecil" in tweet.lower())): 
             matches = checkKeyWords(key_word_award_mapping, tweet.lower())
+            #if 'best performance by an actor in a television series - comedy or musical' in matches:
             if matches != []:
                 #if 'golden globe hosts' in matches:
                 #if ((("won" in tweet.lower() or "congrat" in tweet.lower() or "winner" in tweet.lower() or "goes to" in tweet.lower()) and ("best" in tweet.lower() or "cecil" in tweet.lower())) or ("present" in tweet or "announc" in tweet or "award" in tweet or "give" in tweet)):                    
-                doc = nlp(tweet)
+                winner_keys = ["won", "congrat", "winner", "goes to"]
+                presenter_keys = ["present", "announc", "award", "give"]
+                award_name_keys = ["best"]
+                host_keys = ["host", "golden globes"]
+                if ((any(i for i in winner_keys if(i in tweet.lower()))) or (any(i for i in presenter_keys if(i in tweet.lower()))) or (any(i for i in host_keys if(i in tweet.lower())))):
+                    doc = nlp(tweet)
+                else:
+                    continue
                #     print(tweet)
                # else:
                #     continue
@@ -396,14 +414,15 @@ def pre_ceremony():
                 
             tweet = tweet.lower()
             ##Check if Host
-            hosts = updateHostDictionary(doc, tweet, hosts)
+            hosts = updateHostDictionary(doc, tweet, hosts, host_keys)
             #Check if Award Name
-            awardNames = updateAwardNamesDictionary(doc, tweet, awardNames)
+            awardNames = updateAwardNamesDictionary(doc, tweet, awardNames, award_name_keys)
             #Check if Award Winner
-            winners = updateWinnersDictionary(doc, tweet, winners, matches)
+            winners = updateWinnersDictionary(doc, tweet, winners, matches, winner_keys)
             #Check for Presenters
-            presenters = updatePresentersDictionary(doc, tweet, presenters, matches)
+            presenters = updatePresentersDictionary(doc, tweet, presenters, matches, presenter_keys)
         #Fill in final JSON
+        print(presenters)
         answer = updateAnswerDictionary(year, hosts, awardNames, winners, presenters, answer)
     print("Pre-ceremony processing complete.")
     with open("answers.json", "w") as outfile:
@@ -420,7 +439,7 @@ def main():
     global answer
     answer = {}
     global years
-    years = [2015]
+    years = [2013]
     global names
     with open('names.txt',"r") as f:
         names = f.read()
