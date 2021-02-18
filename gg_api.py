@@ -221,11 +221,11 @@ def updateAnswerDictionary(year, hosts, awardNames, winners, presenters, best_dr
             if (hosts[key] > p):
                 ans.append(key)
         if (len(ans) >= 2):
-            answer[year]["hosts"] = ans[:2]
+            answer["hosts"] = ans[:2]
         else:
             myList = []
             myList.append(ans[0])
-            answer[year]["hosts"] = myList
+            answer["hosts"] = myList
 
     #Awards
     # Removes the chance for award names selected to include the name of person/movie that won an award
@@ -240,18 +240,18 @@ def updateAnswerDictionary(year, hosts, awardNames, winners, presenters, best_dr
     ans = []
     for i in award_list:
         ans.append(i)
-    answer[year]["awards"] = ans[:27]
+    answer["awards"] = ans[:27]
 
     #Winners
     winners.pop('golden globe hosts', None)
     for y in winners:
-        answer[year]["award_data"][y]["winner"] = max(winners[y], key=winners[y].get)
+        answer["award_data"][y]["winner"] = max(winners[y], key=winners[y].get)
 
     presenters.pop('golden globe hosts', None)
     
     for award in awards:
         for x in presenters[award]:
-            if answer[year]["award_data"][award]["winner"] in x:
+            if answer["award_data"][award]["winner"] in x:
                 presenters[award][x] = 0
     for y in presenters:      
         presenters_list = sorted(presenters[y].keys(), key=presenters[y].get, reverse=True)
@@ -262,16 +262,16 @@ def updateAnswerDictionary(year, hosts, awardNames, winners, presenters, best_dr
                 if (presenters[y][key] > p):
                     ans.append(key)
             if (len(ans) >= 2):
-                answer[year]["award_data"][y]["presenters"] = ans[:2]
+                answer["award_data"][y]["presenters"] = ans[:2]
             else:
                 if ans == []:
                     myList = []
                     myList.append(presenters_list[0])
-                    answer[year]["award_data"][y]["presenters"] = myList
+                    answer["award_data"][y]["presenters"] = myList
                 else:
                     myList = []
                     myList.append(ans[0])
-                    answer[year]["award_data"][y]["presenters"] = myList
+                    answer["award_data"][y]["presenters"] = myList
 
     #Best Dressed
     best_dressed_list = sorted(best_dressed.keys(), key=best_dressed.get, reverse=True)
@@ -282,7 +282,7 @@ def updateAnswerDictionary(year, hosts, awardNames, winners, presenters, best_dr
         #    if (best_dressed[key] > p):
         #        ans.append(key)
 
-        answer[year]["best_dressed"] = best_dressed_list[:5] 
+        answer["best_dressed"] = best_dressed_list[:5] 
 
     return answer
     
@@ -298,33 +298,31 @@ def checkIfPerson(h):
 
 
 ### Make Human Readable File ###
-def humanReadable(answer):
-    string = ""
-    for year in answer:
-        string += "Year: " + str(year) + "\n"
-        string += "Hosts: "
-        for i in answer[year]["hosts"]:
+def humanReadable(answer, year):
+    string = "Year: " + str(year) + "\n"
+    string += "Hosts: "
+    for i in answer["hosts"]:
+        string += i + ", "
+    string = string[:-2]
+    string += "\nAwards:" + "\n"
+    for award in answer["awards"]:
+        string += award + "\n"
+    string += "\n"
+    for award in answer["award_data"]:
+        string += "Award: " + award
+        string += "\n" + "Presenters: "
+        for i in answer["award_data"][award]["presenters"]:
             string += i + ", "
         string = string[:-2]
-        string += "\nAwards:" + "\n"
-        for award in answer[year]["awards"]:
-            string += award + "\n"
-        string += "\n"
-        for award in answer[year]["award_data"]:
-            string += "Award: " + award
-            string += "\n" + "Presenters: "
-            for i in answer[year]["award_data"][award]["presenters"]:
-                string += i + ", "
-            string = string[:-2]
-            string += "\nNominees: "
-            for i in answer[year]["award_data"][award]["nominees"]:
-                string += i + ", "
-            string = string[:-2]
-            string += "\nWinner: "
-            string += answer[year]["award_data"][award]["winner"]
-            string += "\n\n"
-        string += "\nBest Dressed on Red Carpet:\n"
-        string += str(answer[year]["best_dressed"])
+        string += "\nNominees: "
+        for i in answer["award_data"][award]["nominees"]:
+            string += i + ", "
+        string = string[:-2]
+        string += "\nWinner: "
+        string += answer["award_data"][award]["winner"]
+        string += "\n\n"
+    string += "\nBest Dressed on Red Carpet:\n"
+    string += str(answer["best_dressed"])
 
     print(string)
     f = open("HumanReadableAnswers.txt", "w")
@@ -338,65 +336,65 @@ def humanReadable(answer):
 def get_hosts(year):
     '''Hosts is a list of one or more strings. Do NOT change the name
     of this function or what it returns.'''
-    json_file = open("answers.json")
+    json_file = open("gg%sanswers.json" % year)
     answer = json.load(json_file)
     json_file.close()
-    hosts = answer[str(year)]["hosts"]
+    hosts = answer["hosts"]
     return hosts
 
 def get_awards(year):
     '''Awards is a list of strings. Do NOT change the name
     of this function or what it returns.'''
-    json_file = open("answers.json")
+    json_file = open("gg%sanswers.json" % year)
     answer = json.load(json_file)
     json_file.close()
-    awards = answer[str(year)]["awards"]
+    awards = answer["awards"]
     return awards
 
 def get_nominees(year):
     '''Nominees is a dictionary with the hard coded award
     names as keys, and each entry a list of strings. Do NOT change
     the name of this function or what it returns.'''
-    json_file = open("answers.json")
+    json_file = open("gg%sanswers.json" % year)
     answer = json.load(json_file)
     json_file.close()
     nominees = {}
     for i in awards:
-        nominees[i] = answer[str(year)]["award_data"][i]["nominees"]
+        nominees[i] = answer["award_data"][i]["nominees"]
     return nominees
 
 def get_winner(year):
     '''Winners is a dictionary with the hard coded award
     names as keys, and each entry containing a single string.
     Do NOT change the name of this function or what it returns.'''
-    json_file = open("answers.json")
+    json_file = open("gg%sanswers.json" % year)
     answer = json.load(json_file)
     json_file.close()
     winners = {}
     for i in awards:
-        winners[i] = answer[str(year)]["award_data"][i]["winner"]
+        winners[i] = answer["award_data"][i]["winner"]
     return winners
 
 def get_presenters(year):
     '''Presenters is a dictionary with the hard coded award
     names as keys, and each entry a list of strings. Do NOT change the
     name of this function or what it returns.'''
-    json_file = open("answers.json")
+    json_file = open("gg%sanswers.json" % year)
     answer = json.load(json_file)
     json_file.close()
     presenters = {}
     for i in awards:
-        presenters[i] = answer[str(year)]["award_data"][i]["presenters"]
+        presenters[i] = answer["award_data"][i]["presenters"]
     return presenters
 
 def get_best_dressed(year):
     '''Presenters is a dictionary with the hard coded award
     names as keys, and each entry a list of strings. Do NOT change the
     name of this function or what it returns.'''
-    json_file = open("answers.json")
+    json_file = open("gg%sanswers.json" % year)
     answer = json.load(json_file)
     json_file.close()
-    best_dressed_people = answer[str(year)]["best_dressed"]
+    best_dressed_people = answer["best_dressed"]
     return best_dressed_people
 
 def pre_ceremony():
@@ -410,13 +408,13 @@ def pre_ceremony():
     global years
     global names
     for year in years:
-        answer[year] = {}
-        answer[year]["hosts"] = []
-        answer[year]["awards"] = {}
-        answer[year]["award_data"] = {}
-        answer[year]["best_dressed"] = []
+        answer = {}
+        answer["hosts"] = []
+        answer["awards"] = {}
+        answer["award_data"] = {}
+        answer["best_dressed"] = []
         for i in awards:
-            answer[year]["award_data"][i] = {"nominees": [], "presenters": [], "winner":""}
+            answer["award_data"][i] = {"nominees": [], "presenters": [], "winner":""}
 
         ## Make Dictionaries for hosts, nominees, presenters, and winners
         hosts = {}
@@ -471,10 +469,12 @@ def pre_ceremony():
         #Fill in final JSON
         #print(presenters)
         answer = updateAnswerDictionary(year, hosts, awardNames, winners, presenters, best_dressed, answer)
+
+        with open("gg%sanswers.json" % year, "w") as outfile:
+            json.dump(answer, outfile)
+        humanReadable(answer, year)
+
     print("Pre-ceremony processing complete.")
-    with open("answers.json", "w") as outfile:
-        json.dump(answer, outfile)
-    humanReadable(answer)
     return
 
 def main():
@@ -486,7 +486,7 @@ def main():
     global answer
     answer = {}
     global years
-    years = [2013]
+    years = [2015]
     global names
     with open('names.txt',"r") as f:
         names = f.read()
