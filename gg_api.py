@@ -194,9 +194,24 @@ def updatePresentersDictionary(doc, tweet, presenters, matches, presenter_keys):
                     presenters[award] = {}
                     presenters[award][h.text.lower()] = 1
     return presenters
-    
+
+### Updates Best Dressed Dictionary
+def updateBestDressedDictionary(doc, tweet, best_dressed, best_dressed_keys):  
+    pos = [tok.i for tok in doc if (tok.pos_ == "PROPN" and not any(i in tok.text.lower().split() for i in tokens_to_ignore))]
+    properPronouns = getSolutionsFromPositions(doc, pos)
+    # Only want Phrases with 2-3 words (to represent a full name)
+    for h in (properPronouns):
+        potential_person = h.text.lower()
+        if not checkIfPerson(h):
+            continue
+        if potential_person in best_dressed:
+            best_dressed[potential_person] += 1
+        else:
+            best_dressed[potential_person] = 1
+    return best_dressed
+ 
 ### Updates the Final Answer Dictionary
-def updateAnswerDictionary(j, hosts, awardNames, winners, presenters, answer):
+def updateAnswerDictionary(year, hosts, awardNames, winners, presenters, best_dressed, answer):
     #Hosts
     host_list = sorted(hosts.keys(), key=hosts.get, reverse=True)
     if (hosts != {}):
@@ -206,11 +221,11 @@ def updateAnswerDictionary(j, hosts, awardNames, winners, presenters, answer):
             if (hosts[key] > p):
                 ans.append(key)
         if (len(ans) >= 2):
-            answer[j]["hosts"] = ans[:2]
+            answer[year]["hosts"] = ans[:2]
         else:
             myList = []
             myList.append(ans[0])
-            answer[j]["hosts"] = myList
+            answer[year]["hosts"] = myList
 
     #Awards
     # Removes the chance for award names selected to include the name of person/movie that won an award
@@ -225,18 +240,18 @@ def updateAnswerDictionary(j, hosts, awardNames, winners, presenters, answer):
     ans = []
     for i in award_list:
         ans.append(i)
-    answer[j]["awards"] = ans[:27]
+    answer[year]["awards"] = ans[:27]
 
     #Winners
     winners.pop('golden globe hosts', None)
     for y in winners:
-        answer[j]["award_data"][y]["winner"] = max(winners[y], key=winners[y].get)
+        answer[year]["award_data"][y]["winner"] = max(winners[y], key=winners[y].get)
 
     presenters.pop('golden globe hosts', None)
     
     for award in awards:
         for x in presenters[award]:
-            if answer[j]["award_data"][award]["winner"] in x:
+            if answer[year]["award_data"][award]["winner"] in x:
                 presenters[award][x] = 0
     for y in presenters:      
         presenters_list = sorted(presenters[y].keys(), key=presenters[y].get, reverse=True)
@@ -247,17 +262,28 @@ def updateAnswerDictionary(j, hosts, awardNames, winners, presenters, answer):
                 if (presenters[y][key] > p):
                     ans.append(key)
             if (len(ans) >= 2):
-                answer[j]["award_data"][y]["presenters"] = ans[:2]
+                answer[year]["award_data"][y]["presenters"] = ans[:2]
             else:
                 if ans == []:
                     myList = []
                     myList.append(presenters_list[0])
-                    answer[j]["award_data"][y]["presenters"] = myList
+                    answer[year]["award_data"][y]["presenters"] = myList
                 else:
                     myList = []
                     myList.append(ans[0])
-                    answer[j]["award_data"][y]["presenters"] = myList
-        
+                    answer[year]["award_data"][y]["presenters"] = myList
+
+    #Best Dressed
+    best_dressed_list = sorted(best_dressed.keys(), key=best_dressed.get, reverse=True)
+    if (best_dressed_list != {}):
+        #p = np.percentile(list(best_dressed.values()),90)
+        #ans = []
+        #for key in best_dressed_list:
+        #    if (best_dressed[key] > p):
+        #        ans.append(key)
+
+        answer[year]["best_dressed"] = best_dressed_list[:5] 
+
     return answer
     
 ### Checks if the first word in a potential answer is a common name to determine if it is a person
@@ -297,8 +323,10 @@ def humanReadable(answer):
             string += "\nWinner: "
             string += answer[year]["award_data"][award]["winner"]
             string += "\n\n"
-        string += "\n"
+        string += "\nBest Dressed on Red Carpet:\n"
+        string += str(answer[year]["best_dressed"])
 
+    print(string)
     f = open("HumanReadableAnswers.txt", "w")
     f.write(string)
     f.close()
@@ -361,6 +389,16 @@ def get_presenters(year):
         presenters[i] = answer[str(year)]["award_data"][i]["presenters"]
     return presenters
 
+def get_best_dressed(year):
+    '''Presenters is a dictionary with the hard coded award
+    names as keys, and each entry a list of strings. Do NOT change the
+    name of this function or what it returns.'''
+    json_file = open("answers.json")
+    answer = json.load(json_file)
+    json_file.close()
+    best_dressed_people = answer[str(year)]["best_dressed"]
+    return best_dressed_people
+
 def pre_ceremony():
     '''This function loads/fetches/processes any data your program
     will use, and stores that data in your DB or in a json, csv, or
@@ -376,6 +414,7 @@ def pre_ceremony():
         answer[year]["hosts"] = []
         answer[year]["awards"] = {}
         answer[year]["award_data"] = {}
+        answer[year]["best_dressed"] = []
         for i in awards:
             answer[year]["award_data"][i] = {"nominees": [], "presenters": [], "winner":""}
 
@@ -384,6 +423,7 @@ def pre_ceremony():
         awardNames = {}
         winners = {}
         presenters = {}
+        best_dressed = {}
 
         ## Cycle Through Tweets
         tweets = pd.read_json("gg" + str(year) + ".json")
@@ -409,6 +449,13 @@ def pre_ceremony():
                #     print(tweet)
                # else:
                #     continue
+            elif ("http://t.co" in tweet):
+                # see if image is being commented on with adjectives befitting "best dressed" classification
+                best_dressed_keys = ["best", "suit", "dress", "amazing", "cloth", "wear", "red carpet"]
+                if(any(i for i in best_dressed_keys if(i in tweet.lower()))):
+                    doc = nlp(tweet)
+                    best_dressed = updateBestDressedDictionary(doc, tweet.lower(), best_dressed, best_dressed_keys)
+                continue
             else:
                 continue
                 
@@ -422,8 +469,8 @@ def pre_ceremony():
             #Check for Presenters
             presenters = updatePresentersDictionary(doc, tweet, presenters, matches, presenter_keys)
         #Fill in final JSON
-        print(presenters)
-        answer = updateAnswerDictionary(year, hosts, awardNames, winners, presenters, answer)
+        #print(presenters)
+        answer = updateAnswerDictionary(year, hosts, awardNames, winners, presenters, best_dressed, answer)
     print("Pre-ceremony processing complete.")
     with open("answers.json", "w") as outfile:
         json.dump(answer, outfile)

@@ -1,162 +1,164 @@
-Year: 2015
+Year: 2013
 Hosts: amy poehler, tina fey
 Awards:
-best actress
-best actor
-best motion picture
-best original song
-best director
-best supporting actor
-best tv series
-best supporting actress
-best animated feature film
-best tv comedy
-best foreign language film
-best tv drama
-best miniseries
-best tv drama series
-best director awards
-best motion picture drama
-best song
-best original score
-best television series
-best foreign film
-best tv comedy series
-best television series actor
-best tv movie
-best film
+best tv series - comedy
+best director motion picture
+best motion picture - comedy
+best motion picture comedy
+best original song motion picture
+best director - motion picture
+best tv series comedy
+best tv actor - comedy
+best tv comedy |
+best actress - mini-series
+best original score-motion picture
+best original song - motion picture
+best actor tv series - comedy
+best tv series comedy award
+best actor motion picture comedy
+best comedy series actress http://t.co/yt3gaabs
+best original song at
+best original song tonight
+best original song -
+best actress - comedy
+best actress comedy movie
+best animated feature award
+best actor tv comedy
 best tv series actress
-best mini-series
-best performance
+best actress tv comedy
+best tv comedy series
+best actor - comedy
 
 Award: best screenplay - motion picture
-Presenters: alejandro gonzalez iñarritu
+Presenters: robert pattinson, django unchained
 Nominees
-Winner: birdman
+Winner: quentin tarantino
 
 Award: best director - motion picture
-Presenters: harrison ford, han solo
+Presenters: goldenglobes halle berry, halle berry
 Nominees
-Winner: richard linklater
+Winner: ben affleck
 
 Award: best performance by an actress in a television series - comedy or musical
-Presenters: kerry washington, kerri washington
+Presenters: jason bateman
 Nominees
-Winner: gina rodriguez
+Winner: lena dunham
 
 Award: best foreign language film
-Presenters: colin farrell, best foreign languague
+Presenters: sylvester stallone, ben affleck
 Nominees
-Winner: leviathan
+Winner: amour
 
 Award: best performance by an actor in a supporting role in a motion picture
-Presenters: j. k. simmons, jennifer aniston
+Presenters: bradley cooper
 Nominees
-Winner: j.k. simmons
+Winner: christoph waltz
 
 Award: best performance by an actress in a supporting role in a series, mini-series or motion picture made for television
-Presenters: jaime dornan, anna bates
+Presenters: dennis quaid, kerry washington
 Nominees
-Winner: joanne froggatt
+Winner: maggie smith
 
 Award: best motion picture - comedy or musical
-Presenters: robert downey jr., robert downey jr
+Presenters: dustin hoffman
 Nominees
-Winner: the grand budapest hotel
+Winner: les miserables
 
 Award: best performance by an actress in a motion picture - comedy or musical
-Presenters: ricky gervais, michael keaton
+Presenters: kristen wiig, bill clinton
 Nominees
-Winner: amy adams
+Winner: jennifer lawrence
 
 Award: best mini-series or motion picture made for television
-Presenters: jeremy renner, jennifer lopez
+Presenters: eva longoria
 Nominees
-Winner: fargo
+Winner: game change
 
 Award: best original score - motion picture
-Presenters: common score, vince vaughn
+Presenters: mychael danna, jason statham
 Nominees
-Winner: the theory of
+Winner: life of pi
 
 Award: best performance by an actress in a television series - drama
-Presenters: chris pratt, maggie gyllenhaal
+Presenters: lea michele
 Nominees
-Winner: ruth wilson
+Winner: claire danes
 
 Award: best performance by an actress in a motion picture - drama
-Presenters: ruth wilson, matthew mcconaughey
+Presenters: jennifer lawrence, lea michele
+Nominees
+Winner: jessica chastain
+
+Award: cecil b. demille award
+Presenters: robert downey jr., robert downey jr
+Nominees
+Winner: jodie foster
+
+Award: best performance by an actor in a motion picture - comedy or musical
+Presenters: hugh jackman
+Nominees
+Winner: hugh jackman
+
+Award: best motion picture - drama
+Presenters: julia roberts
+Nominees
+Winner: argo
+
+Award: best performance by an actor in a supporting role in a series, mini-series or motion picture made for television
+Presenters: christoph waltz
+Nominees
+Winner: ed harris
+
+Award: best performance by an actress in a supporting role in a motion picture
+Presenters: anne hathaway
+Nominees
+Winner: anne hathaway
+
+Award: best television series - drama
+Presenters: paul rudd
+Nominees
+Winner: homeland
+
+Award: best performance by an actor in a mini-series or motion picture made for television
+Presenters: ed harris
+Nominees
+Winner: kevin costner
+
+Award: best performance by an actress in a mini-series or motion picture made for television
+Presenters: julianne moore
 Nominees
 Winner: julianne moore
 
-Award: cecil b. demille award
-Presenters: don cheadle, julianna margulies
-Nominees
-Winner: george clooney
-
-Award: best performance by an actor in a motion picture - comedy or musical
-Presenters: amy adams, jeffrey tambor
-Nominees
-Winner: michael keaton
-
-Award: best motion picture - drama
-Presenters: meryl streep, jack black
-Nominees
-Winner: boyhood
-
-Award: best performance by an actor in a supporting role in a series, mini-series or motion picture made for television
-Presenters: dakota johnson, jamie dorman
-Nominees
-Winner: matt bomer
-
-Award: best performance by an actress in a supporting role in a motion picture
-Presenters: jared leto
-Nominees
-Winner: patricia arquette
-
-Award: best television series - drama
-Presenters: paul rudd, adam levine
-Nominees
-Winner: the affair
-
-Award: best performance by an actor in a mini-series or motion picture made for television
-Presenters: matt bomer, billy bob thorton
-Nominees
-Winner: billy bob thornton
-
-Award: best performance by an actress in a mini-series or motion picture made for television
-Presenters: julianne moore, adrien brody
-Nominees
-Winner: maggie gyllenhaal
-
 Award: best animated feature film
-Presenters: kevin hart, salma hayek
+Presenters: sacha baron cohen
 Nominees
-Winner: train
+Winner: brave
 
 Award: best original song - motion picture
-Presenters: common score, john legend
+Presenters: taylor swift, j. lo
 Nominees
-Winner: glory
+Winner: skyfall
 
 Award: best performance by an actor in a motion picture - drama
-Presenters: gwyneth paltrow, steve carell
+Presenters: daniel day lewis
 Nominees
-Winner: eddie redmayne
+Winner: daniel day lewis
 
 Award: best television series - comedy or musical
-Presenters: kim jung un
+Presenters: lena dunham, jason bateman
 Nominees
-Winner: transparent
+Winner: girls
 
 Award: best performance by an actor in a television series - drama
-Presenters: david duchovny will, frank underwood
+Presenters: damian lewis
 Nominees
-Winner: kevin spacey
+Winner: damian lewis
 
 Award: best performance by an actor in a television series - comedy or musical
-Presenters: michael keaton, louis ck
+Presenters: jennifer lawrence
 Nominees
-Winner: jeffrey tambor
+Winner: don cheadle
 
 
+Best Dressed on Red Carpet:
+['amy poehler', 'jennifer lawrence', 'anne hathaway', 'tina fey', 'christoph waltz']
