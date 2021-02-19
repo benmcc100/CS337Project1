@@ -1,0 +1,168 @@
+Year: 2013
+Hosts: amy poehler, tina fey
+Awards:
+best motion picture drama
+best motion picture - comedy
+best actress drama winner
+best motion picture - drama
+best foreign language film
+best tv series - drama
+best screenplay - motion picture
+best tv series - comedy
+best director - motion picture
+best motion picture comedy
+best tv series drama
+best supporting actor winner
+best television series - comedy
+best tv series comedy
+best motion picture - musical
+best original song - motion picture
+best animated feature film
+best director motion picture
+best actor tv series
+best motion picture screenplay
+best original song motion picture
+best actress - comedy
+best supporting actor - motion picture
+best television series actor - drama
+best tv series actress - comedy
+best tv series - comedy/ musical
+best actor - tv series
+
+Award: best screenplay - motion picture
+Presenters: robert pattinson, django unchained
+Nominees: django unchained, robert pattinson alert, robert pattinson, amanda seyfried
+Winner: quentin tarantino
+
+Award: best director - motion picture
+Presenters: goldenglobes halle berry, halle berry
+Nominees: quentin tarantino, ang lee, ben afleck, la academia
+Winner: ben affleck
+
+Award: best performance by an actress in a television series - comedy or musical
+Presenters: jason bateman
+Nominees: jennifer lawrence, amy poehler, tina fey, jason bateman
+Winner: lena dunham
+
+Award: best foreign language film
+Presenters: sylvester stallone, ben affleck
+Nominees: austria, michael haneke, do, the oscars
+Winner: amour
+
+Award: best performance by an actor in a supporting role in a motion picture
+Presenters: bradley cooper, kate hudson
+Nominees: tommy lee jones, christopher waltz, bradley cooper, amy po
+Winner: christoph waltz
+
+Award: best performance by an actress in a supporting role in a series, mini-series or motion picture made for television
+Presenters: dennis quaid, kerry washington
+Nominees: anne hathaway, dennis quaid, kerry washington, maggie smith
+Winner: maggie smith
+
+Award: best motion picture - comedy or musical
+Presenters: dustin hoffman
+Nominees: les misérables, musical goes, les mis, lesmiserables
+Winner: les miserables
+
+Award: best performance by an actress in a motion picture - comedy or musical
+Presenters: kristen wiig, bill clinton
+Nominees: lena dunham, ― jennifer lawrance, tommy lee jones, naomi watts
+Winner: jennifer lawrence
+
+Award: best mini-series or motion picture made for television
+Presenters: eva longoria, don cheadle
+Nominees: julianne moore, gamechange, gamechange gana el, hbo
+Winner: game change
+
+Award: best original score - motion picture
+Presenters: mychael danna, jason statham
+Nominees: mychael danna, michael danna, skyfall, life is good
+Winner: life of pi
+
+Award: best performance by an actress in a television series - drama
+Presenters: lea michele
+Nominees: lea michele, juliane moore, nathan fillion, carrie mathison
+Winner: claire danes
+
+Award: best performance by an actress in a motion picture - drama
+Presenters: jennifer lawrence, lea michele
+Nominees: claire danes, jennifer lawrence, naomi watts, lea michele
+Winner: jessica chastain
+
+Award: cecil b. demille award
+Presenters: robert downey jr., robert downey jr
+Nominees: robert downey jr., robert downey jr, robert downey, cecille b. demille
+Winner: jodie foster
+
+Award: best performance by an actor in a motion picture - comedy or musical
+Presenters: hugh jackman
+Nominees: don cheadle, les misérables, jim parsons, jack black
+Winner: hugh jackman
+
+Award: best motion picture - drama
+Presenters: julia roberts
+Nominees: ben affleck, is, stage, see
+Winner: argo
+
+Award: best performance by an actor in a supporting role in a series, mini-series or motion picture made for television
+Presenters: christoph waltz
+Nominees: christoph waltz, christopher waltz, ed harris
+Winner: ed harris
+
+Award: best performance by an actress in a supporting role in a motion picture
+Presenters: professor mcgonagall, maggie smith
+Nominees: maggie smith, dame maggie smith, jennifer lawrence, sally field
+Winner: anne hathaway
+
+Award: best television series - drama
+Presenters: paul rudd
+Nominees: drama goes, claire danes, breaking bad, first teleprompter fail of the evening leading
+Winner: homeland
+
+Award: best performance by an actor in a mini-series or motion picture made for television
+Presenters: ed harris
+Nominees: ed harris, benedict cumberbatch, president bill clinton, reparto en película
+Winner: kevin costner
+
+Award: best performance by an actress in a mini-series or motion picture made for television
+Presenters: julianne moore
+Nominees: jessica lange, jennifer lawrence, jessica chastain, jullianne moore
+Winner: julianne moore
+
+Award: best animated feature film
+Presenters: sacha baron cohen
+Nominees: the little lesbian archer, wreck, ralph, disney
+Winner: brave
+
+Award: best original song - motion picture
+Presenters: taylor swift, jennifer lopez @jlo
+Nominees: adele, paul epworth, amp, smith win
+Winner: skyfall
+
+Award: best performance by an actor in a motion picture - drama
+Presenters: daniel day lewis
+Nominees: damian lewis, hugh jackman, damian lewis se, damien lewis
+Winner: daniel day lewis
+
+Award: best television series - comedy or musical
+Presenters: lena dunham, jason bateman
+Nominees: lena dunham, musical goes, ending modern family, musical o comedia
+Winner: girls
+
+Award: best performance by an actor in a television series - drama
+Presenters: damian lewis
+Nominees: damien lewis, nicholas brody, connie britton, bill clinton
+Winner: damian lewis
+
+Award: best performance by an actor in a television series - comedy or musical
+Presenters: jennifer lawrence
+Nominees: lena dunham, jennifer lawrence, matt leblanc, jim parsons
+Winner: don cheadle
+
+
+Best Dressed on Red Carpet:
+['kate hudson', 'claire danes', 'anne hathaway', 'jennifer lawrence', 'tina fey']
+Worst Dressed on Red Carpet:
+['halle berry', 'lucy liu', 'eva longoria', 'toby jones', 'helena bonham carter']
+Funniest Speakers:
+['taylor swift', 'kristen wiig', 'sylvester stallone', 'arnold schwarzenegger', 'hahahahaha @lenadunham']

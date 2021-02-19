@@ -71,12 +71,12 @@ Winner: amy adams
 
 Award: best mini-series or motion picture made for television
 Presenters: jeremy renner, jennifer lopez
-Nominees: cha know, award, do, the winners
+Nominees: cha know, do, true detective, fx
 Winner: fargo
 
 Award: best original score - motion picture
 Presenters: vince vaughn, jóhann jóhannsson
-Nominees: john becomes, award, johann johannsson, selma
+Nominees: john becomes, johann johannsson, selma, legend
 Winner: the theory of
 
 Award: best performance by an actress in a television series - drama
@@ -101,7 +101,7 @@ Winner: michael keaton
 
 Award: best motion picture - drama
 Presenters: meryl streep, jack black
-Nominees: the win marked the third award, unique storytelling can win big, drama goes, richard linklater
+Nominees: unique storytelling can win big, drama goes, richard linklater, the title
 Winner: boyhood
 
 Award: best performance by an actor in a supporting role in a series, mini-series or motion picture made for television
@@ -116,7 +116,7 @@ Winner: patricia arquette
 
 Award: best television series - drama
 Presenters: paul rudd, adam levine
-Nominees: showtime, theaffair, game of thrones, the win marked the first award
+Nominees: showtime, theaffair, game of thrones, house of cards
 Winner: the affair
 
 Award: best performance by an actor in a mini-series or motion picture made for television
@@ -131,7 +131,7 @@ Winner: maggie gyllenhaal
 
 Award: best animated feature film
 Presenters: kevin hart, salma hayek
-Nominees: dragon, award, drain, dragon 2
+Nominees: dragon, drain, dragon 2, big hero
 Winner: train
 
 Award: best original song - motion picture
@@ -146,7 +146,7 @@ Winner: eddie redmayne
 
 Award: best television series - comedy or musical
 Presenters: honors leelah alcorn, kim jung un
-Nominees: amazon, award, comedy series, the winner of the
+Nominees: amazon, comedy series, musical goes, amazon newcomer
 Winner: transparent
 
 Award: best performance by an actor in a television series - drama
@@ -161,4 +161,8 @@ Winner: jeffrey tambor
 
 
 Best Dressed on Red Carpet:
-['eddie redmayne', 'lana del rey', 'george clooney', 'tina fey', 'emma stone']
+['amal clooney', 'emma stone', 'naomi watts', 'julianne moore', 'tina fey']
+Worst Dressed on Red Carpet:
+['keira knightley', 'lana del rey', 'claire danes', 'zosia mamet', 'jemima kirke']
+Funniest Speakers:
+['billy bob thornton', 'jeremy renner', 'amy adams', 'patricia arquette ahaha', 'george clooney']

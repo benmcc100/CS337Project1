@@ -13,7 +13,6 @@ certifi==2020.12.5
 cffi==1.14.4
 chardet==4.0.0
 click==7.1.2
-colorama @ file:///tmp/build/80754af9/colorama_1607707115595/work
 cycler==0.10.0
 cymem==2.0.5
 decorator==4.4.2
@@ -25,16 +24,12 @@ fuzzywuzzy==0.18.0
 idna==2.10
 ijson==3.1.3
 ipykernel==5.4.3
-ipython @ file:///C:/ci/ipython_1607355475512/work
-ipython-genutils @ file:///tmp/build/80754af9/ipython_genutils_1606773439826/work
-jedi @ file:///C:/ci/jedi_1611341083684/work
 Jinja2==2.11.2
 joblib==1.0.0
 Js2Py==0.70
 json5==0.9.5
 jsonschema==3.2.0
 jupyter-client==6.1.11
-jupyter-core @ file:///C:/ci/jupyter_core_1606932886273/work
 jupyter-server==1.2.2
 jupyterlab==3.0.5
 jupyterlab-pygments==0.1.2
@@ -57,10 +52,8 @@ packaging==20.8
 pandas==1.2.1
 pandoc==1.0.2
 pandocfilters==1.4.3
-parso @ file:///tmp/build/80754af9/parso_1607623074025/work
 pathy==0.3.5
 patsy==0.5.1
-pickleshare @ file:///tmp/build/80754af9/pickleshare_1606932040724/work
 Pillow==8.1.0
 pipwin==0.5.0
 ply==3.11
@@ -70,7 +63,6 @@ prometheus-client==0.9.0
 prompt-toolkit==3.0.13
 pycparser==2.20
 pydantic==1.7.3
-Pygments @ file:///tmp/build/80754af9/pygments_1610565767015/work
 pyjsparser==2.7.1
 pyparsing==2.4.7
 PyPrind==2.11.2
@@ -86,7 +78,6 @@ regex==2020.11.13
 requests==2.25.1
 scipy==1.6.0
 Send2Trash==1.5.0
-six @ file:///C:/ci/six_1605205404068/work
 smart-open==3.0.0
 sniffio==1.2.0
 soupsieve==2.1
@@ -97,13 +88,10 @@ statsmodels==0.12.1
 terminado==0.9.2
 testpath==0.4.4
 thinc==8.0.1
-tornado @ file:///C:/ci/tornado_1606924294691/work
 tqdm==4.56.0
-traitlets @ file:///tmp/build/80754af9/traitlets_1602787416690/work
 typer==0.3.2
 tzlocal==2.1
 urllib3==1.26.2
 wasabi==0.8.2
-wcwidth @ file:///tmp/build/80754af9/wcwidth_1593447189090/work
 webencodings==0.5.1
 wincertstore==0.2
